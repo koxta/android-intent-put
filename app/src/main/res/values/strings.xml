@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">Intent</string>
 
-    <string-array name="operations">
-        <item>+</item>
-        <item>-</item>
-        <item>*</item>
-        <item>/</item>
-    </string-array>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="multiply">*</string>
+    <string name="divide">-</string>
+
+    <string name="number1">Number 1</string>
+    <string name="number2">Number 2</string>
+
+    <string name="label">Simple calculator</string>
+
+
 </resources>

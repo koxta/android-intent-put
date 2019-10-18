@@ -4,36 +4,54 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
 
+    enum class Operation {
+        Sum, Subtract, Multiply, Divide
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        calcualate.setOnClickListener { runSecondActivity() }
 
+        val sumButton: Button = findViewById (R.id.sum)
+        val subtractButton: Button = findViewById (R.id.subtract)
+        val multiplyButton: Button = findViewById (R.id.multiply)
+        val divideButton: Button = findViewById (R.id.divide)
 
-
-        ArrayAdapter.createFromResource(
-            this,
-            R.array.operations,
-            android.R.layout.simple_spinner_item
-        ).also { adapter ->
-
-            operation.adapter = adapter
-        }
-
+        sumButton.setOnClickListener { runSecondActivity(Operation.Sum) }
+        subtractButton.setOnClickListener { runSecondActivity(Operation.Subtract) }
+        multiplyButton.setOnClickListener { runSecondActivity(Operation.Multiply) }
+        divideButton.setOnClickListener { runSecondActivity(Operation.Divide) }
 
     }
 
+    private fun calculate(operation: Operation):String{
+        if(first.text.isEmpty() || second.text.isEmpty()){
+            Toast.makeText(this,"Please enter both numbers",Toast.LENGTH_LONG).show()
+            return ""
+        }
 
-    private fun add():Float{
+        val result : Float = when (operation){
+            Operation.Sum -> sum()
+            Operation.Subtract -> subtract()
+            Operation.Multiply -> multiply()
+            Operation.Divide -> divide()
+        }
+
+        return "${first.text} + ${second.text} = $result"
+
+    }
+
+    private fun sum():Float{
         return  first.text.toString().toFloat() + second.text.toString().toFloat()
     }
 
@@ -51,22 +69,14 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun runSecondActivity(){
+    private fun runSecondActivity(operation: Operation){
 
-        var result : Float = 0F
+        val result = calculate(operation)
 
-
-        val operation = operation.selectedItem.toString()
-
-        when(operation){
-            "*" -> { result = multiply() }
-            "/" -> { result = divide() }
-            "+" -> { result = add() }
-            "-" -> { result = subtract() }
-        }
+        if(result.isEmpty()) return
 
         val intent =  Intent(this,Second::class.java)
-        intent.putExtra("result", result.toString())
+        intent.putExtra("result", result)
         startActivity(intent)
     }
 
