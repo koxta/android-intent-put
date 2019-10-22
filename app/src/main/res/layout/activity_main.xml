@@ -16,7 +16,7 @@
         android:textSize="40sp"
               android:text="@string/label"
               android:textAlignment="center"
-              android:textColor="#D81B60"
+              android:textColor="@color/labelColor"
               android:layout_marginBottom="50dp"
     />
 
@@ -37,8 +37,8 @@
                 android:textSize="18sp"
                 android:textAlignment="center"
                 android:layout_marginRight="20dp"
-                android:textColorHint="#FF979797"
-                android:textColor="#D81B60"
+                android:textColorHint="@color/hint"
+                android:textColor="@color/labelColor"
         />
 
         <EditText
@@ -50,8 +50,8 @@
                 android:layout_weight="1"
                 android:hint="@string/number2"
                 android:textSize="18sp"
-                android:textColorHint="#FF979797"
-                android:textColor="#D81B60"
+                android:textColorHint="@color/hint"
+                android:textColor="@color/labelColor"
         />
     </LinearLayout>
 
@@ -64,8 +64,8 @@
         <Button android:layout_width="100dp" android:layout_height="match_parent"
             android:text="@string/plus"
             android:id="@+id/sum"
-            android:textColor="#FFFFFF"
-            android:background="#00574B"
+            android:textColor="@color/white"
+            android:background="@color/buttonColor"
             android:layout_marginRight="20dp"
         />
         <Button
@@ -73,8 +73,8 @@
             android:layout_height="match_parent"
             android:text="@string/minus"
             android:id="@+id/subtract"
-            android:textColor="#FFFFFF"
-            android:background="#00574B"
+            android:textColor="@color/white"
+            android:background="@color/buttonColor"
         />
     </LinearLayout>
     <LinearLayout
@@ -87,8 +87,8 @@
             android:layout_height="match_parent"
             android:text="@string/multiply"
             android:id="@+id/multiply"
-            android:textColor="#FFFFFF"
-            android:background="#00574B"
+            android:textColor="@color/white"
+            android:background="@color/buttonColor"
             android:layout_marginRight="20dp"
         />
         <Button
@@ -96,8 +96,8 @@
             android:layout_height="match_parent"
             android:text="@string/divide"
             android:id="@+id/divide"
-            android:textColor="#FFFFFF"
-            android:background="#00574B"
+            android:textColor="@color/white"
+            android:background="@color/buttonColor"
         />
     </LinearLayout>
 

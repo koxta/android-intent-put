@@ -47,7 +47,13 @@ class MainActivity : AppCompatActivity() {
             Operation.Divide -> divide()
         }
 
-        return "${first.text} + ${second.text} = $result"
+        val operationSymbol : Char = when(operation){
+            Operation.Sum -> '+'
+            Operation.Subtract -> '-'
+            Operation.Multiply -> '*'
+            Operation.Divide -> '/'        }
+
+        return "${first.text} $operationSymbol ${second.text} = $result"
 
     }
 
